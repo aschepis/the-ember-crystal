@@ -6,7 +6,7 @@ signal _choice(index: int)
 var _menu: MenuList
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := TextureRect.new()
 	bg.texture = Placeholder.background("title", Color("1a0a2a"), Color("6a2a1a"), 640, 360)
 	bg.set_anchors_preset(PRESET_FULL_RECT)

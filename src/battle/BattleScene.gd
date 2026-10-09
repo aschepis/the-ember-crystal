@@ -34,7 +34,7 @@ func setup(group: String, background: String = "") -> void:
 	background_id = background
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	logic.setup(group_id, GameState.party, GameState.rng)
 	_build_ui()
 	_spawn_enemies()
@@ -97,8 +97,8 @@ func _build_ui() -> void:
 	_party_panel.member_selected.connect(func(i): _target_done.emit(GameState.party[i]))
 	_party_panel.cancelled.connect(func(): _target_done.emit(null))
 
-	_list_win = UITheme.make_window(Vector2(616, 92))
-	_list_win.position = Vector2(12, 262)
+	_list_win = UITheme.make_window(Vector2(616, 100))
+	_list_win.position = Vector2(12, 258)
 	_list_win.visible = false
 	add_child(_list_win)
 	var v := VBoxContainer.new()
@@ -210,7 +210,6 @@ func _collect_party_commands() -> Array[BattleAction]:
 	_party_panel.highlight_index = -1
 	_party_panel.refresh()
 	_command.deactivate()
-	_command_win.visible = false
 	return actions
 
 func _choose_for(actor: Actor, can_back: bool) -> BattleAction:

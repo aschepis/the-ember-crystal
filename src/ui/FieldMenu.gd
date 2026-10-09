@@ -19,7 +19,7 @@ var _logic: BattleLogic
 const COMMANDS := ["Items", "Magic", "Equip", "Status", "Order", "Save", "Quit"]
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	_logic = BattleLogic.for_field()
 	var bg := ColorRect.new()
 	bg.color = Color("0a0a1a")

@@ -7,8 +7,13 @@ signal stack_changed
 var _stack: Array[Node] = []
 var _fader: ColorRect
 var _layer: CanvasLayer
+## Control scenes live here so a field Camera2D never shifts full-screen UI.
+var _ui_layer: CanvasLayer
 
 func _ready() -> void:
+	_ui_layer = CanvasLayer.new()
+	_ui_layer.layer = 1
+	add_child(_ui_layer)
 	_layer = CanvasLayer.new()
 	_layer.layer = 100
 	add_child(_layer)
@@ -24,7 +29,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if t and t.get_script() and t.get_script().resource_path.ends_with("DebugLab.gd"):
 			return
 		get_viewport().set_input_as_handled()
-		EventRunner.dialog_box.hide_box()
 		replace_all(load("res://src/debug/DebugLab.gd").new())
 
 func top() -> Node:
@@ -38,7 +42,10 @@ func push(scene: Node) -> void:
 	if prev:
 		_set_active(prev, false)
 	_stack.append(scene)
-	add_child(scene)
+	if scene is Control:
+		_ui_layer.add_child(scene)
+	else:
+		add_child(scene)
 	_set_active(scene, true)
 	stack_changed.emit()
 
@@ -47,7 +54,7 @@ func pop(result = null) -> void:
 	if _stack.is_empty():
 		return
 	var scene: Node = _stack.pop_back()
-	remove_child(scene)
+	scene.get_parent().remove_child(scene)
 	scene.queue_free()
 	var below := top()
 	if below:
@@ -58,9 +65,10 @@ func pop(result = null) -> void:
 
 ## Clears everything and shows a single scene (title, game over, lab).
 func replace_all(scene: Node) -> void:
+	EventRunner.abort()
 	while not _stack.is_empty():
 		var s: Node = _stack.pop_back()
-		remove_child(s)
+		s.get_parent().remove_child(s)
 		s.queue_free()
 	push(scene)
 

@@ -15,7 +15,7 @@ const ENTRIES := [
 	{"text": "Field: Town (Emberfall)", "desc": "NPC wandering, dialogs, shops, inn, recruits, save point.", "action": "field_town"},
 	{"text": "Field: Dungeon (Ember Cave)", "desc": "Cave encounters, sealed door + key, golem ambush, stairs, boss floor.", "action": "field_cave"},
 	{"text": "Field: Debug Arena", "desc": "Tiny map with one of every interactable; flag-gated NPC.", "action": "field_arena"},
-	{"text": "Menu: Field Menu (Items/Magic/Equip/Status/Order/Save)", "desc": "The pause menu with a debug party and a full bag.", "action": "field_menu"},
+	{"text": "Menu: Field Menu (Items/Equip/Status...)", "desc": "The pause menu with a debug party and a full bag.", "action": "field_menu"},
 	{"text": "Shop: Buy / Sell", "desc": "Debug Emporium with everything in the database; equip previews per member.", "action": "shop"},
 	{"text": "Shop: Inn", "desc": "Inn flow: price, confirm, fade, full heal.", "action": "inn"},
 	{"text": "Dialog: Script Runner", "desc": "Run any dialog script by id against the current flags.", "action": "dialog_pick"},
@@ -28,7 +28,7 @@ const ENTRIES := [
 ]
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := ColorRect.new()
 	bg.color = Color("0a0a1a")
 	bg.set_anchors_preset(PRESET_FULL_RECT)
@@ -36,7 +36,7 @@ func _ready() -> void:
 	var title := UITheme.make_label("THE EMBER CRYSTAL  —  Debug Lab", UITheme.FONT_SIZE_LARGE, UITheme.TEXT_HIGHLIGHT)
 	title.position = Vector2(20, 10)
 	add_child(title)
-	var sub := UITheme.make_label("Godot %s   |   F1 returns here from anywhere   |   Z/Enter confirm, X/Esc cancel, arrows/WASD move, Shift run" % Engine.get_version_info()["string"], UITheme.FONT_SIZE_SMALL, UITheme.TEXT_DIM)
+	var sub := UITheme.make_label("Godot %s  |  F1: back here  |  Z/Enter confirm, X/Esc cancel, arrows/WASD move, Shift run, F2 force fight" % Engine.get_version_info()["string"], 11, UITheme.TEXT_DIM)
 	sub.position = Vector2(20, 36)
 	add_child(sub)
 	var win := UITheme.make_window(Vector2(380, 290))

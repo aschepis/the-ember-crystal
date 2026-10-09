@@ -22,10 +22,18 @@ var dialog_box: DialogBox
 var running: bool = false
 var last_battle_result: String = ""
 var _depth := 0
+var _generation := 0
 
 func _ready() -> void:
 	dialog_box = DialogBox.new()
 	add_child(dialog_box)
+
+## Cancels whatever is running (scene swaps, F1). In-flight coroutines notice the generation change.
+func abort() -> void:
+	_generation += 1
+	_depth = 0
+	running = false
+	dialog_box.abort()
 
 ## Runs a dialog by id (or an inline Array). Awaitable.
 func run(script) -> void:
@@ -34,10 +42,13 @@ func run(script) -> void:
 		push_warning("EventRunner: empty or unknown script %s" % [script])
 		return
 	_depth += 1
+	var gen := _generation
 	if _depth == 1:
 		running = true
 		event_started.emit()
 	await _execute(commands)
+	if gen != _generation:
+		return
 	_depth -= 1
 	if _depth == 0:
 		dialog_box.hide_box()
@@ -57,7 +68,8 @@ func _find_label(commands: Array, label: String) -> int:
 
 func _execute(commands: Array) -> void:
 	var pc := 0
-	while pc < commands.size():
+	var gen := _generation
+	while pc < commands.size() and gen == _generation:
 		var cmd = commands[pc]
 		pc += 1
 		if cmd is String:

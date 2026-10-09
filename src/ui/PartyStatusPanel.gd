@@ -26,7 +26,8 @@ func refresh() -> void:
 		var a := GameState.party[i]
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 10)
-		var cursor := UITheme.make_label("▶" if i == highlight_index else " ", UITheme.FONT_SIZE, UITheme.TEXT_HIGHLIGHT)
+		var cursor := UITheme.make_label("▶" if i == highlight_index else "", UITheme.FONT_SIZE, UITheme.TEXT_HIGHLIGHT)
+		cursor.custom_minimum_size.x = 18
 		h.add_child(cursor)
 		if not compact:
 			var icon := TextureRect.new()
@@ -58,6 +59,7 @@ func pick(allow_dead: bool = true) -> void:
 	if _menu == null:
 		_menu = MenuList.new()
 		_menu.visible = false
+		_menu.input_only = true
 		add_child(_menu)
 		_menu.selected.connect(func(i): _menu.deactivate(); highlight_index = -1; refresh(); member_selected.emit(i))
 		_menu.cancelled.connect(func(): _menu.deactivate(); highlight_index = -1; refresh(); cancelled.emit())

@@ -54,8 +54,10 @@ func _ready() -> void:
 	_toast.position = Vector2(12, 8)
 	_toast.modulate.a = 0.0
 	hud.add_child(_toast)
-	_debug_label = UITheme.make_label("", UITheme.FONT_SIZE_SMALL, UITheme.TEXT_DIM)
-	_debug_label.position = Vector2(380, 8)
+	_debug_label = UITheme.make_label("", 11, UITheme.TEXT_DIM)
+	_debug_label.position = Vector2(300, 6)
+	_debug_label.size = Vector2(330, 14)
+	_debug_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	hud.add_child(_debug_label)
 	EventRunner.event_finished.connect(_refresh_entity_visibility)
 	GameState.party_changed.connect(func(): if player: player.refresh_leader())
@@ -65,6 +67,8 @@ func is_busy() -> bool:
 	return _busy or EventRunner.running or _menu_open or SceneStack.top() != self
 
 func _on_stack_active(active: bool) -> void:
+	if hud:
+		hud.visible = active
 	if active:
 		_menu_open = false
 		_refresh_entity_visibility()
@@ -172,7 +176,7 @@ func _in_rect(e: Dictionary, pos: Vector2i) -> bool:
 
 func _process(_delta: float) -> void:
 	_update_camera(false)
-	_debug_label.text = "%s (%d,%d) %s | zone %s | next fight %d" % [map.id, player.tile.x, player.tile.y, map.tile_at(player.tile.x, player.tile.y), _current_zone(), _steps_until_encounter] if map else ""
+	_debug_label.text = "%s (%d,%d) %s · zone %s · fight in %d" % [map.id, player.tile.x, player.tile.y, map.tile_at(player.tile.x, player.tile.y), _current_zone() if _current_zone() != "" else "-", _steps_until_encounter] if map else ""
 
 func _update_camera(snap: bool) -> void:
 	if map == null:

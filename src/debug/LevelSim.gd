@@ -8,7 +8,7 @@ var _table: RichTextLabel
 var _ids: Array = []
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := ColorRect.new()
 	bg.color = Color("0a0a1a")
 	bg.set_anchors_preset(PRESET_FULL_RECT)

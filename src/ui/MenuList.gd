@@ -14,6 +14,8 @@ signal cursor_moved(index: int)
 @export var wrap: bool = true
 @export var allow_cancel: bool = true
 @export var font_size: int = UITheme.FONT_SIZE
+## Hidden menus that only drive a cursor elsewhere (party picker) still need input.
+var input_only: bool = false
 
 var items: Array = []           # Strings (or Dictionaries with "text", "right", "disabled", "color")
 var index: int = 0
@@ -127,7 +129,7 @@ func _ensure_visible() -> void:
 	scroll = clampi(scroll, 0, maxi(0, _rows() - visible_rows))
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not active or not is_visible_in_tree():
+	if not active or (not input_only and not is_visible_in_tree()):
 		return
 	if event.is_action_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()

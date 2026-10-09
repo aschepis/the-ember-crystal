@@ -15,6 +15,7 @@ var _waiting := false
 var _advance := false
 var _skip := false
 var _choice_result := -1
+var _generation := 0
 
 func _ready() -> void:
 	layer = 50
@@ -47,7 +48,14 @@ func _ready() -> void:
 	_choice_panel.add_child(_choices)
 	_choices.selected.connect(func(i): _choice_result = i)
 
+## Closes the box and releases any coroutine waiting on input.
+func abort() -> void:
+	_generation += 1
+	_waiting = false
+	hide_box()
+
 func say(text: String, speaker: String = "") -> void:
+	var gen := _generation
 	_panel.visible = true
 	_speaker.text = speaker
 	_speaker.visible = speaker != ""
@@ -58,19 +66,22 @@ func say(text: String, speaker: String = "") -> void:
 	_waiting = true
 	var total := _text.get_total_character_count()
 	var shown := 0.0
-	while shown < total and not _skip:
+	while shown < total and not _skip and gen == _generation:
 		await get_tree().process_frame
 		shown += CHARS_PER_SECOND * get_process_delta_time()
 		_text.visible_characters = int(shown)
+	if gen != _generation:
+		return
 	_text.visible_characters = -1
 	_prompt.visible = true
 	_advance = false
-	while not _advance:
+	while not _advance and gen == _generation:
 		await get_tree().process_frame
 	_waiting = false
 	_prompt.visible = false
 
 func choose(options: Array, prompt: String = "", speaker: String = "") -> int:
+	_waiting = false
 	if prompt != "":
 		_panel.visible = true
 		_speaker.text = speaker
@@ -83,12 +94,13 @@ func choose(options: Array, prompt: String = "", speaker: String = "") -> int:
 	await get_tree().process_frame
 	_choice_panel.position = Vector2(640 - _choice_panel.size.x - 24, 262 - _choice_panel.size.y - 4)
 	_choice_result = -1
+	var gen := _generation
 	_choices.activate()
-	while _choice_result < 0:
+	while _choice_result < 0 and gen == _generation:
 		await get_tree().process_frame
 	_choices.deactivate()
 	_choice_panel.visible = false
-	return _choice_result
+	return maxi(0, _choice_result)
 
 func hide_box() -> void:
 	_panel.visible = false

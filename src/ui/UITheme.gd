@@ -60,6 +60,11 @@ static func window_style(bg: Color = WINDOW_BG, border: Color = WINDOW_BORDER) -
 	sb.content_margin_top = 6; sb.content_margin_bottom = 6
 	return sb
 
+## Sizes a scene-root Control to the viewport. Anchors alone give size 0 under a CanvasLayer.
+static func fullscreen(c: Control) -> void:
+	c.set_anchors_preset(Control.PRESET_FULL_RECT)
+	c.size = c.get_viewport().get_visible_rect().size if c.is_inside_tree() else Vector2(640, 360)
+
 static func make_window(min_size: Vector2 = Vector2.ZERO) -> PanelContainer:
 	var p := PanelContainer.new()
 	p.theme = theme()

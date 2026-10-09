@@ -23,7 +23,7 @@ func setup(shop_id: String) -> void:
 	assert(shop != null, "Unknown shop " + shop_id)
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := ColorRect.new()
 	bg.color = Color("0a0a1a")
 	bg.set_anchors_preset(PRESET_FULL_RECT)
@@ -66,7 +66,9 @@ func _ready() -> void:
 	bottom.add_child(bv)
 	_desc = UITheme.make_label("", UITheme.FONT_SIZE_SMALL, UITheme.TEXT_HIGHLIGHT)
 	bv.add_child(_desc)
-	_preview = UITheme.make_label("", UITheme.FONT_SIZE_SMALL)
+	_preview = UITheme.make_label("", 11)
+	_preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_preview.custom_minimum_size = Vector2(590, 40)
 	bv.add_child(_preview)
 	_qty_win = UITheme.make_window(Vector2(260, 50))
 	_qty_win.position = Vector2(190, 140)

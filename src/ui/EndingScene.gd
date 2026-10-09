@@ -5,7 +5,7 @@ var _text: Label
 var _done := false
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := TextureRect.new()
 	bg.texture = Placeholder.background("ending", Color("2a1a0a"), Color("ff9a4a"), 640, 360)
 	bg.set_anchors_preset(PRESET_FULL_RECT)

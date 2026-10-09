@@ -4,7 +4,7 @@ extends Control
 signal _choice(index: int)
 
 func _ready() -> void:
-	set_anchors_preset(PRESET_FULL_RECT)
+	UITheme.fullscreen(self)
 	var bg := ColorRect.new()
 	bg.color = Color("1a0000")
 	bg.set_anchors_preset(PRESET_FULL_RECT)
