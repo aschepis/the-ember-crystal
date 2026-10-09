@@ -38,6 +38,21 @@ static func create(character_id: String) -> Actor:
 	a.mp = a.max_mp()
 	return a
 
+## A nameless level-1 actor of a class, for simulations and tests.
+static func create_for_class(class_id: String) -> Actor:
+	var a := Actor.new()
+	a.id = "sim_" + class_id
+	a.klass = Database.klass(class_id)
+	assert(a.klass != null, "Unknown class " + class_id)
+	a.character = CharacterData.from_dict({"id": a.id, "name": a.klass.name, "class": class_id})
+	a.display_name = a.klass.name
+	a.base = a.klass.base_stats.duplicate()
+	for slot in ItemData.EQUIP_SLOTS:
+		a.equipment[slot] = ""
+	a.hp = a.max_hp()
+	a.mp = a.max_mp()
+	return a
+
 func color() -> Color:
 	return Color(character.color if character.color != "" else klass.color)
 

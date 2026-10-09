@@ -23,12 +23,12 @@
     {"id": "overworld", "steps_per_encounter": 14, "background": "plains", "entries": [
       {"group": "slimes", "weight": 5, "terrain": ["plains", "road"]},
       {"group": "slime_trio", "weight": 3, "terrain": ["plains"]},
-      {"group": "slime_bat", "weight": 3, "terrain": ["plains", "forest"]},
-      {"group": "goblin_pair", "weight": 3, "terrain": ["plains", "road"]},
+      {"group": "slime_bat", "weight": 3, "terrain": ["plains", "forest", "desert"]},
+      {"group": "goblin_pair", "weight": 3},
       {"group": "goblin_slime", "weight": 2, "terrain": ["plains"]},
       {"group": "wolves", "weight": 4, "terrain": ["forest"]},
       {"group": "spider_pack", "weight": 3, "terrain": ["forest"]},
-      {"group": "bandit_solo", "weight": 2, "terrain": ["road", "plains"]}
+      {"group": "bandit_solo", "weight": 2}
     ]},
     {"id": "overworld_east", "steps_per_encounter": 12, "background": "plains", "entries": [
       {"group": "wolves", "weight": 4},

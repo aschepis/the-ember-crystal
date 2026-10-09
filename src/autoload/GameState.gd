@@ -52,6 +52,10 @@ func new_game() -> void:
 func debug_party(level: int = 8) -> void:
 	new_game()
 	var dbg: Dictionary = Database.cfg("debug_party", {})
+	if dbg.has("party"):
+		party.clear()
+		for cid in dbg["party"]:
+			add_member(String(cid))
 	gold = int(dbg.get("gold", 5000))
 	for entry in dbg.get("items", []):
 		inventory.add(String(entry.get("id", "")), int(entry.get("count", 1)))

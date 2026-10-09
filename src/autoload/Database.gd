@@ -13,6 +13,7 @@ var shops: Dictionary = {}        # id -> ShopData
 var maps: Dictionary = {}         # id -> MapData
 var dialogs: Dictionary = {}      # id -> Array (command list)
 var config: Dictionary = {}       # data/config.json
+var raw: Dictionary = {}          # category -> id -> source dict (for the data browser)
 var load_errors: Array[String] = []
 
 func _ready() -> void:
@@ -21,36 +22,37 @@ func _ready() -> void:
 func reload() -> void:
 	items.clear(); skills.clear(); classes.clear(); characters.clear(); enemies.clear()
 	groups.clear(); zones.clear(); shops.clear(); maps.clear(); dialogs.clear(); load_errors.clear()
+	raw = {"items": {}, "skills": {}, "classes": {}, "characters": {}, "enemies": {}, "groups": {}, "zones": {}, "shops": {}, "maps": {}, "dialogs": {}}
 	config = _read_json("res://data/config.json")
 	if config == null:
 		config = {}
 	for d in _read_list("res://data/items.json"):
-		var it := ItemData.from_dict(d); items[it.id] = it
+		var it := ItemData.from_dict(d); items[it.id] = it; raw["items"][it.id] = d
 	for d in _read_list("res://data/skills.json"):
-		var s := SkillData.from_dict(d); skills[s.id] = s
+		var s := SkillData.from_dict(d); skills[s.id] = s; raw["skills"][s.id] = d
 	for d in _read_list("res://data/classes.json"):
-		var c := ClassData.from_dict(d); classes[c.id] = c
+		var c := ClassData.from_dict(d); classes[c.id] = c; raw["classes"][c.id] = d
 	for d in _read_list("res://data/characters.json"):
-		var c := CharacterData.from_dict(d); characters[c.id] = c
+		var c := CharacterData.from_dict(d); characters[c.id] = c; raw["characters"][c.id] = d
 	for d in _read_list("res://data/enemies.json"):
-		var e := EnemyData.from_dict(d); enemies[e.id] = e
+		var e := EnemyData.from_dict(d); enemies[e.id] = e; raw["enemies"][e.id] = d
 	var enc = _read_json("res://data/encounters.json")
 	if enc is Dictionary:
 		for d in enc.get("groups", []):
-			var g := EncounterData.Group.from_dict(d); groups[g.id] = g
+			var g := EncounterData.Group.from_dict(d); groups[g.id] = g; raw["groups"][g.id] = d
 		for d in enc.get("zones", []):
-			var z := EncounterData.Zone.from_dict(d); zones[z.id] = z
+			var z := EncounterData.Zone.from_dict(d); zones[z.id] = z; raw["zones"][z.id] = d
 	for d in _read_list("res://data/shops.json"):
-		var s := ShopData.from_dict(d); shops[s.id] = s
+		var s := ShopData.from_dict(d); shops[s.id] = s; raw["shops"][s.id] = d
 	for path in _list_files("res://data/maps", ".json"):
 		var d = _read_json(path)
 		if d is Dictionary:
-			var m := MapData.from_dict(d); maps[m.id] = m
+			var m := MapData.from_dict(d); maps[m.id] = m; raw["maps"][m.id] = d
 	for path in _list_files("res://data/dialogs", ".json"):
 		var d = _read_json(path)
 		if d is Dictionary:
 			for key in d:
-				dialogs[key] = d[key]
+				dialogs[key] = d[key]; raw["dialogs"][key] = d[key]
 	_validate()
 
 func _validate() -> void:
