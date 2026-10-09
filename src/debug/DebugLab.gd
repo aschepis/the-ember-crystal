@@ -120,6 +120,7 @@ func _on_selected(i: int) -> void:
 			_run_battle("boss_wyrm")
 		"battle_lowlevel":
 			GameState.new_game()
+			GameState.pending_event = ""
 			_run_battle("slimes")
 		"field_overworld":
 			_ensure_party(8)

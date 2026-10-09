@@ -96,7 +96,8 @@ docs/                    DECISIONS.md, CONTENT_FORMAT.md, ASSET_PIPELINE.md
 ```sh
 tools/test.sh                                              # unit + content integrity (50 tests)
 godot --headless --path . --script res://tests/smoke_scenes.gd     # instantiate every scene
-godot --path . --script res://tests/screenshot_tour.gd -- --out=/tmp/shots   # windowed, saves PNGs
+godot --path . --script res://tests/screenshot_tour.gd -- --out=/tmp/shots    # windowed, saves PNGs
+godot --path . --script res://tests/screenshot_tour2.gd -- --out=/tmp/shots   # new game, warps, chests, saves, victory, defeat
 ```
 
 The screenshot tour needs a window and keeps it on top while it runs (macOS stops

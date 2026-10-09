@@ -42,6 +42,9 @@ Decisions made without consultation, with the reasoning, so they can be revisite
 - **`SceneStack`** holds full-screen scenes; only the top processes. Battle pushes over
   the field, menus push over either. Control scenes live in a CanvasLayer so the
   field camera cannot move them.
+- **Scenes are freed by `replace_all`, so nothing runs after it in the caller.** Cross-scene
+  hand-offs go through state instead (`GameState.pending_event` runs the new-game intro
+  when the field loads; battle defeat triggers game over before any fade).
 - **`EventRunner`** is a tiny command interpreter (say/choice/if/goto/set_flag/
   give_item/battle/shop/inn/warp/join/...). It is the one place plot progression
   happens; NPC visibility and triggers are conditions on flags. Conditions are
