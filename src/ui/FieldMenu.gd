@@ -292,7 +292,7 @@ func _status() -> void:
 	if who < 0:
 		return
 	var a := GameState.party[who]
-	_set_sub("Status", [])
+	_set_sub("", [])
 	_sub.visible = false
 	_desc.visible = false
 	_detail.visible = true

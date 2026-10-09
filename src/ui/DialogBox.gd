@@ -16,6 +16,10 @@ var _advance := false
 var _skip := false
 var _choice_result := -1
 var _generation := 0
+## Test hooks: when auto_advance is on, say() returns at once and choose() picks auto_choice.
+var auto_advance := false
+var auto_choice := 0
+var transcript: Array[String] = []
 
 func _ready() -> void:
 	layer = 50
@@ -55,6 +59,9 @@ func abort() -> void:
 	hide_box()
 
 func say(text: String, speaker: String = "") -> void:
+	transcript.append(text)
+	if auto_advance:
+		return
 	var gen := _generation
 	_panel.visible = true
 	_speaker.text = speaker
@@ -81,6 +88,9 @@ func say(text: String, speaker: String = "") -> void:
 	_prompt.visible = false
 
 func choose(options: Array, prompt: String = "", speaker: String = "") -> int:
+	transcript.append(prompt)
+	if auto_advance:
+		return clampi(auto_choice, 0, options.size() - 1)
 	_waiting = false
 	if prompt != "":
 		_panel.visible = true

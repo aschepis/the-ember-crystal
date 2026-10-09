@@ -23,6 +23,8 @@ var running: bool = false
 var last_battle_result: String = ""
 var _depth := 0
 var _generation := 0
+## Test hook: when non-empty, start_battle() returns this result without a battle scene.
+var scripted_battle_result := ""
 
 func _ready() -> void:
 	dialog_box = DialogBox.new()
@@ -211,6 +213,8 @@ func _inn(shop_or_price, speaker: String) -> void:
 
 ## Pushes a battle scene and waits for it. Returns "victory" | "defeat" | "escape".
 func start_battle(group_id: String, background: String = "") -> String:
+	if scripted_battle_result != "":
+		return scripted_battle_result
 	var BattleScene = load("res://src/battle/BattleScene.gd")
 	var scene = BattleScene.new()
 	scene.setup(group_id, background)
