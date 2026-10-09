@@ -1,0 +1,49 @@
+[
+  {
+    "id": "fighter", "name": "Fighter", "glyph": "F", "color": "d84a3a",
+    "description": "Front-line warrior. Heavy armor, big swords, no magic.",
+    "base_stats": {"str": 12, "agi": 6, "vit": 12, "int": 3, "spi": 4, "luck": 5, "max_hp": 42, "max_mp": 0},
+    "growth": {"str": 1.6, "agi": 0.6, "vit": 1.3, "int": 0.2, "spi": 0.3, "luck": 0.4, "max_hp": 4.5, "max_mp": 0.0},
+    "spells": [], "weapon_types": ["sword", "mace"]
+  },
+  {
+    "id": "thief", "name": "Thief", "glyph": "T", "color": "3aa860",
+    "description": "Fast and lucky. Acts first, dodges often, runs reliably.",
+    "base_stats": {"str": 7, "agi": 13, "vit": 7, "int": 5, "spi": 5, "luck": 10, "max_hp": 32, "max_mp": 0},
+    "growth": {"str": 0.9, "agi": 1.7, "vit": 0.8, "int": 0.4, "spi": 0.4, "luck": 1.0, "max_hp": 3.2, "max_mp": 0.0},
+    "spells": [], "weapon_types": ["dagger", "sword"]
+  },
+  {
+    "id": "white_mage", "name": "White Mage", "glyph": "W", "color": "e8e8f8",
+    "description": "Healer. Cures wounds and ailments, smites with holy light.",
+    "base_stats": {"str": 4, "agi": 6, "vit": 6, "int": 7, "spi": 13, "luck": 6, "max_hp": 26, "max_mp": 14},
+    "growth": {"str": 0.3, "agi": 0.6, "vit": 0.7, "int": 0.8, "spi": 1.6, "luck": 0.5, "max_hp": 2.6, "max_mp": 2.4},
+    "spells": [
+      {"level": 1, "skill": "cure"}, {"level": 3, "skill": "poisona"}, {"level": 4, "skill": "dia"},
+      {"level": 6, "skill": "protect"}, {"level": 8, "skill": "blink"}, {"level": 10, "skill": "esuna"},
+      {"level": 12, "skill": "cura"}, {"level": 15, "skill": "life"}, {"level": 18, "skill": "diaga"},
+      {"level": 24, "skill": "curaga"}
+    ],
+    "weapon_types": ["staff", "mace"]
+  },
+  {
+    "id": "black_mage", "name": "Black Mage", "glyph": "B", "color": "7a4ad8",
+    "description": "Offensive caster. Elemental spells hit single or all enemies.",
+    "base_stats": {"str": 3, "agi": 7, "vit": 4, "int": 14, "spi": 6, "luck": 5, "max_hp": 22, "max_mp": 16},
+    "growth": {"str": 0.2, "agi": 0.7, "vit": 0.5, "int": 1.7, "spi": 0.7, "luck": 0.5, "max_hp": 2.2, "max_mp": 2.6},
+    "spells": [
+      {"level": 1, "skill": "fire"}, {"level": 2, "skill": "blizzard"}, {"level": 3, "skill": "thunder"},
+      {"level": 5, "skill": "sleep"}, {"level": 7, "skill": "poison"}, {"level": 9, "skill": "bio"},
+      {"level": 10, "skill": "fira"}, {"level": 11, "skill": "blizzara"}, {"level": 12, "skill": "thundara"},
+      {"level": 14, "skill": "quake"}, {"level": 20, "skill": "flare"}
+    ],
+    "weapon_types": ["dagger", "rod"]
+  },
+  {
+    "id": "monk", "name": "Monk", "glyph": "M", "color": "e0a040",
+    "description": "Bare-handed brawler. Hits hard, grows tough, wears little.",
+    "base_stats": {"str": 11, "agi": 10, "vit": 11, "int": 2, "spi": 5, "luck": 6, "max_hp": 40, "max_mp": 0},
+    "growth": {"str": 1.5, "agi": 1.1, "vit": 1.4, "int": 0.1, "spi": 0.4, "luck": 0.5, "max_hp": 4.4, "max_mp": 0.0},
+    "spells": [], "weapon_types": ["knuckles"]
+  }
+]

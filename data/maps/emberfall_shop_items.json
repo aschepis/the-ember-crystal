@@ -1,0 +1,41 @@
+{
+ "id": "emberfall_shop_items",
+ "name": "Emberfall Sundries",
+ "kind": "interior",
+ "bgm": "town",
+ "rows": [
+  "###########",
+  "#_________#",
+  "#ccccccccc#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#####D#####"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 5,
+   "y": 9,
+   "map": "emberfall",
+   "tx": 19,
+   "ty": 5,
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "item_keeper",
+   "name": "Shopkeeper",
+   "x": 5,
+   "y": 1,
+   "glyph": "S",
+   "color": "60c060",
+   "dialog": "shop_items",
+   "facing": "down",
+   "interact_through_counter": true
+  }
+ ]
+}

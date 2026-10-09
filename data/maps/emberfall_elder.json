@@ -1,0 +1,46 @@
+{
+ "id": "emberfall_elder",
+ "name": "Elder's House",
+ "kind": "interior",
+ "bgm": "town",
+ "rows": [
+  "###########",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#####D#####"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 5,
+   "y": 9,
+   "map": "emberfall",
+   "tx": 12,
+   "ty": 5,
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "elder",
+   "name": "Elder",
+   "x": 5,
+   "y": 2,
+   "glyph": "E",
+   "color": "f0e0c0",
+   "dialog": "elder",
+   "facing": "down"
+  },
+  {
+   "type": "chest",
+   "x": 9,
+   "y": 1,
+   "item": "ether"
+  }
+ ]
+}

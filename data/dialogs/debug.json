@@ -1,0 +1,34 @@
+{
+  "debug_dialog": [
+    {"say": "This is the dialog system. Text types out; press confirm to skip or advance.", "speaker": "Tester"},
+    {"say": "It supports {leader}-style substitution, choices, flags and branching. You have {gold} gold."},
+    {"choice": [{"text": "Set the unlock flag", "goto": "unlock"}, {"text": "Give me stuff", "goto": "stuff"}, {"text": "Nothing", "goto": "bye"}], "prompt": "What should I demonstrate?", "speaker": "Tester"},
+    {"label": "unlock"},
+    {"set_flag": "debug_unlock"},
+    {"say": "Flag 'debug_unlock' set. A new NPC appeared in the arena. Visibility is condition-driven.", "speaker": "Tester"},
+    {"end": true},
+    {"label": "stuff"},
+    {"give_item": "hi_potion", "count": 2},
+    {"give_gold": 250},
+    {"end": true},
+    {"label": "bye"},
+    {"say": "Suit yourself.", "speaker": "Tester"}
+  ],
+  "debug_unlocked": [
+    {"say": "I only exist because debug_unlock is set. Talk count: {flag:debug_talks}", "speaker": "Unlockable"},
+    {"add_flag": "debug_talks"},
+    {"if": "debug_talks>=2", "then": "many"},
+    {"end": true},
+    {"label": "many"},
+    {"say": "Counters work too. This branch needs debug_talks>=2.", "speaker": "Unlockable"}
+  ],
+  "debug_fight": [
+    {"choice": [{"text": "Slimes (easy)", "goto": "easy"}, {"text": "Status zoo", "goto": "zoo"}, {"text": "Golem", "goto": "golem"}, {"text": "Boss", "goto": "boss"}], "prompt": "Pick your fight.", "speaker": "Fight Me"},
+    {"label": "easy"}, {"battle": "slimes", "win": "won", "escape": "ran"}, {"end": true},
+    {"label": "zoo"}, {"battle": "debug_all_statuses", "win": "won", "escape": "ran"}, {"end": true},
+    {"label": "golem"}, {"battle": "golem_guard", "win": "won"}, {"end": true},
+    {"label": "boss"}, {"battle": "boss_wyrm", "win": "won"}, {"end": true},
+    {"label": "won"}, {"say": "You won. The event script received the 'win' branch.", "speaker": "Fight Me"}, {"end": true},
+    {"label": "ran"}, {"say": "You ran. The event script received the 'escape' branch.", "speaker": "Fight Me"}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+ "id": "emberfall_shop_gear",
+ "name": "The Whetstone & Hardwear",
+ "kind": "interior",
+ "bgm": "town",
+ "rows": [
+  "###########",
+  "#_________#",
+  "#ccccccccc#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#####D#####"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 5,
+   "y": 9,
+   "map": "emberfall",
+   "tx": 7,
+   "ty": 11,
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "weapon_keeper",
+   "name": "Smith",
+   "x": 3,
+   "y": 1,
+   "glyph": "W",
+   "color": "c0c0c0",
+   "dialog": "shop_weapons",
+   "facing": "down",
+   "interact_through_counter": true
+  },
+  {
+   "type": "npc",
+   "id": "armor_keeper",
+   "name": "Armorer",
+   "x": 7,
+   "y": 1,
+   "glyph": "A",
+   "color": "c08040",
+   "dialog": "shop_armor",
+   "facing": "down",
+   "interact_through_counter": true
+  }
+ ]
+}

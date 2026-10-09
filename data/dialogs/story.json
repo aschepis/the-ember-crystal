@@ -1,0 +1,170 @@
+{
+  "elder": [
+    {"if": "has_crystal", "then": "crystal_returned"},
+    {"if": "wyrm_defeated", "then": "wyrm_done"},
+    {"if": "met_elder", "then": "repeat"},
+    {"say": "{leader}... you came. Then you felt it too. The hearth-fires are dying.", "speaker": "Elder"},
+    {"say": "Three nights ago a wyrm tore the Ember Crystal from the shrine and fled into the cave beyond the pass.", "speaker": "Elder"},
+    {"say": "Without it, winter will swallow the valley. Will you bring it back?", "speaker": "Elder"},
+    {"choice": [{"text": "We will.", "goto": "accept"}, {"text": "Give us a moment.", "goto": "hesitate"}]},
+    {"label": "hesitate"},
+    {"say": "Every hour the fires grow dimmer. Decide quickly.", "speaker": "Elder"},
+    {"end": true},
+    {"label": "accept"},
+    {"set_flag": "met_elder"},
+    {"say": "Bless you. I have told the guard at the pass to let you through.", "speaker": "Elder"},
+    {"say": "The hermit in the quiet house kept a key to the cave's lower door. Ask him for it.", "speaker": "Elder"},
+    {"say": "Take this for the road.", "speaker": "Elder"},
+    {"give_gold": 100},
+    {"give_item": "potion", "count": 2},
+    {"end": true},
+    {"label": "repeat"},
+    {"say": "The cave lies east, past the mountain pass. The hermit has the key to its depths.", "speaker": "Elder"},
+    {"end": true},
+    {"label": "wyrm_done"},
+    {"say": "You slew the beast? Then the crystal still lies in its den. Fetch it, quickly!", "speaker": "Elder"},
+    {"end": true},
+    {"label": "crystal_returned"},
+    {"say": "The Ember Crystal! I can feel the warmth from here.", "speaker": "Elder"},
+    {"say": "You have saved us all, {leader}. Let the hearths burn again!", "speaker": "Elder"},
+    {"set_flag": "game_complete"},
+    {"ending": true}
+  ],
+  "pass_guard": [
+    {"say": "Halt. The pass is closed by the Elder's order. Nothing good lives east of here.", "speaker": "Guard"},
+    {"say": "If you have business beyond, take it up with the Elder in Emberfall.", "speaker": "Guard"}
+  ],
+  "pass_guard_open": [
+    {"if": "wyrm_defeated", "then": "after"},
+    {"say": "The Elder vouched for you. Go on through... and watch the skies.", "speaker": "Guard"},
+    {"end": true},
+    {"label": "after"},
+    {"say": "You came back! Nobody comes back from that cave.", "speaker": "Guard"}
+  ],
+  "hermit": [
+    {"if": "cave_door_open", "then": "done"},
+    {"if": "has_item:cave_key", "then": "has_key"},
+    {"if": "met_elder", "then": "give"},
+    {"say": "...Go away. Unless the Elder sent you, I have nothing to say.", "speaker": "Hermit"},
+    {"end": true},
+    {"label": "give"},
+    {"say": "The Elder sent you? Hmph. Then you'll want this.", "speaker": "Hermit"},
+    {"give_item": "cave_key"},
+    {"set_flag": "got_cave_key"},
+    {"say": "The lower door in Ember Cave. Don't lose it. I only made one.", "speaker": "Hermit"},
+    {"end": true},
+    {"label": "has_key"},
+    {"say": "The door is on the far side of the first cavern, up the slope. The key fits. Go.", "speaker": "Hermit"},
+    {"end": true},
+    {"label": "done"},
+    {"say": "You opened it. Then there's nothing left to do but finish it.", "speaker": "Hermit"}
+  ],
+  "vex_recruit": [
+    {"if": "vex_declined", "then": "again"},
+    {"say": "You're the ones the Elder sent after the wyrm? You'll need someone who understands fire.", "speaker": "Vex"},
+    {"label": "ask"},
+    {"choice": [{"text": "Join us.", "goto": "join"}, {"text": "Not now.", "goto": "decline"}], "prompt": "Let me come with you.", "speaker": "Vex"},
+    {"label": "join"},
+    {"if": "party_size>=4", "then": "full"},
+    {"join": "vex"},
+    {"end": true},
+    {"label": "full"},
+    {"say": "Four is all a road can carry. Come back when you have room.", "speaker": "Vex"},
+    {"end": true},
+    {"label": "decline"},
+    {"set_flag": "vex_declined"},
+    {"say": "Suit yourself. I'll be here.", "speaker": "Vex"},
+    {"end": true},
+    {"label": "again"},
+    {"say": "Changed your mind?", "speaker": "Vex"},
+    {"goto": "ask"}
+  ],
+  "juno_recruit": [
+    {"if": "met_elder", "then": "offer"},
+    {"say": "Good ale, warm fire. Bad time to be a wanderer with no fight to pick.", "speaker": "Juno"},
+    {"end": true},
+    {"label": "offer"},
+    {"say": "Heard you're going after the wyrm. I've been waiting for a reason to crack my knuckles.", "speaker": "Juno"},
+    {"choice": [{"text": "Come along.", "goto": "join"}, {"text": "Maybe later.", "goto": "later"}], "prompt": "Need another pair of fists?", "speaker": "Juno"},
+    {"label": "join"},
+    {"if": "party_size>=4", "then": "full"},
+    {"join": "juno"},
+    {"end": true},
+    {"label": "full"},
+    {"say": "Your party's full up. Drop someone and come find me.", "speaker": "Juno"},
+    {"end": true},
+    {"label": "later"},
+    {"say": "I'll be here. The ale isn't going anywhere.", "speaker": "Juno"}
+  ],
+  "innkeeper": [
+    {"inn": "emberfall_inn", "speaker": "Innkeeper"}
+  ],
+  "patron": [
+    {"if": "wyrm_defeated", "then": "late"},
+    {"say": "Hic. The wyrm breathes fire, they say. Bring something cold.", "speaker": "Patron"},
+    {"end": true},
+    {"label": "late"},
+    {"say": "Hic. To the heroes! Another round!", "speaker": "Patron"}
+  ],
+  "villager_1": [
+    {"if": "has_crystal", "then": "end_state"},
+    {"if": "met_elder", "then": "quest"},
+    {"say": "The Elder has been asking for you. His house is the middle one on the north row.", "speaker": "Villager"},
+    {"end": true},
+    {"label": "quest"},
+    {"say": "You're really going into the cave? Buy armor first. The Whetstone is south of here.", "speaker": "Villager"},
+    {"end": true},
+    {"label": "end_state"},
+    {"say": "Is it true? The fires are back? Oh, thank you!", "speaker": "Villager"}
+  ],
+  "villager_2": [
+    {"say": "I saw the wyrm! It was THIS big! It was red and it was ON FIRE!", "speaker": "Child"},
+    {"add_flag": "child_stories"},
+    {"if": "child_stories>=3", "then": "bored"},
+    {"end": true},
+    {"label": "bored"},
+    {"say": "I already told you {flag:child_stories} times. Go DO something about it!", "speaker": "Child"}
+  ],
+  "villager_3": [
+    {"say": "Spiders bite poison. Carry Antidotes. Bats sing you to sleep. Hit them to wake up.", "speaker": "Old Woman"},
+    {"say": "Skeletons? Fire. Always fire. Or holy light if the girl knows Dia yet.", "speaker": "Old Woman"}
+  ],
+  "shop_items": [{"shop": "emberfall_items"}],
+  "shop_weapons": [{"shop": "emberfall_weapons"}],
+  "shop_armor": [{"shop": "emberfall_armor"}],
+  "shop_debug": [{"shop": "debug_everything"}],
+  "cave_sealed_door": [
+    {"if": "has_item:cave_key", "then": "open"},
+    {"say": "A heavy door sealed with an iron lock. It needs a key."},
+    {"end": true},
+    {"label": "open"},
+    {"say": "You fit the Cave Key into the lock. It turns with a groan."},
+    {"take_item": "cave_key"},
+    {"set_flag": "cave_door_open"},
+    {"sfx": "door"},
+    {"say": "The door stands open. Stairs lead down."}
+  ],
+  "golem_ambush": [
+    {"say": "The cave floor shudders. A shape of stone unfolds from the wall!"},
+    {"battle": "golem_guard", "win": "won"},
+    {"end": true},
+    {"label": "won"},
+    {"set_flag": "golem_defeated"},
+    {"say": "The golem crumbles into rubble. The way ahead is clear."}
+  ],
+  "boss_wyrm": [
+    {"say": "A wall of heat. Coiled around the glowing crystal, the Ember Wyrm raises its head."},
+    {"say": "You should not have come, little embers.", "speaker": "Ember Wyrm"},
+    {"battle": "boss_wyrm", "win": "won"},
+    {"end": true},
+    {"label": "won"},
+    {"set_flag": "wyrm_defeated"},
+    {"say": "The wyrm collapses. Where it lay, the Ember Crystal pulses with gentle warmth."}
+  ],
+  "crystal_pickup": [
+    {"say": "The Ember Crystal is warm to the touch."},
+    {"give_item": "ember_crystal"},
+    {"set_flag": "has_crystal"},
+    {"say": "Bring it back to the Elder in Emberfall."}
+  ]
+}

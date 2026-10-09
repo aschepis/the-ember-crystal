@@ -1,0 +1,122 @@
+{
+ "id": "debug_arena",
+ "name": "Debug Arena",
+ "kind": "interior",
+ "bgm": "",
+ "encounter_zone": "",
+ "rows": [
+  "####################",
+  "#__________________#",
+  "#__________________#",
+  "#_____________~~___#",
+  "#_____________~~___#",
+  "#__________________#",
+  "#__________________#",
+  "#__________________#",
+  "#__________________#",
+  "#__________________#",
+  "#__________________#",
+  "##########D#########"
+ ],
+ "entities": [
+  {
+   "type": "npc",
+   "id": "dbg_talker",
+   "name": "Tester",
+   "x": 4,
+   "y": 3,
+   "glyph": "T",
+   "color": "ffffff",
+   "dialog": "debug_dialog",
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "dbg_shop",
+   "name": "Debug Shop",
+   "x": 8,
+   "y": 3,
+   "glyph": "S",
+   "color": "60c060",
+   "dialog": "shop_debug",
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "dbg_inn",
+   "name": "Debug Inn",
+   "x": 12,
+   "y": 3,
+   "glyph": "I",
+   "color": "d0a060",
+   "dialog": "innkeeper",
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "dbg_fight",
+   "name": "Fight Me",
+   "x": 16,
+   "y": 3,
+   "glyph": "F",
+   "color": "d84a3a",
+   "dialog": "debug_fight",
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "dbg_wander",
+   "name": "Wanderer",
+   "x": 10,
+   "y": 8,
+   "glyph": "W",
+   "color": "c0a080",
+   "dialog": "villager_2",
+   "wander": true
+  },
+  {
+   "type": "npc",
+   "id": "dbg_locked",
+   "name": "Unlockable",
+   "x": 4,
+   "y": 8,
+   "glyph": "U",
+   "color": "ffe060",
+   "dialog": "debug_unlocked",
+   "condition": "debug_unlock"
+  },
+  {
+   "type": "chest",
+   "x": 2,
+   "y": 10,
+   "item": "potion",
+   "count": 3
+  },
+  {
+   "type": "chest",
+   "x": 17,
+   "y": 10,
+   "gold": 999
+  },
+  {
+   "type": "sign",
+   "x": 1,
+   "y": 1,
+   "text": "Debug Arena. Talk to everyone. Open the chests. Flip the flag."
+  },
+  {
+   "type": "save_point",
+   "x": 18,
+   "y": 1
+  },
+  {
+   "type": "warp",
+   "x": 10,
+   "y": 11,
+   "map": "emberfall",
+   "tx": 11,
+   "ty": 15,
+   "facing": "up"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {"id": "slimes", "enemies": [{"enemy": "slime", "count": 2}]},
+    {"id": "slime_trio", "enemies": [{"enemy": "slime", "count": 3}]},
+    {"id": "slime_bat", "enemies": ["slime", "bat"]},
+    {"id": "goblin_pair", "enemies": [{"enemy": "goblin", "count": 2}]},
+    {"id": "goblin_slime", "enemies": ["goblin", "slime", "slime"]},
+    {"id": "wolves", "enemies": [{"enemy": "wolf", "count": 2}]},
+    {"id": "spider_pack", "enemies": [{"enemy": "spider", "count": 2}, "bat"]},
+    {"id": "bandit_solo", "enemies": ["bandit"]},
+    {"id": "bandit_gang", "enemies": ["bandit", "goblin", "goblin"]},
+    {"id": "slugs", "enemies": [{"enemy": "cave_slug", "count": 2}]},
+    {"id": "skeletons", "enemies": [{"enemy": "skeleton", "count": 2}]},
+    {"id": "imp_bats", "enemies": ["imp", "bat", "bat"]},
+    {"id": "ghosts", "enemies": ["ghost", "skeleton"]},
+    {"id": "lizards", "enemies": [{"enemy": "fire_lizard", "count": 2}]},
+    {"id": "lizard_imp", "enemies": ["fire_lizard", "imp"]},
+    {"id": "golem_guard", "enemies": ["stone_golem"], "can_run": false},
+    {"id": "boss_wyrm", "enemies": ["ember_wyrm"], "can_run": false, "background": "boss"},
+    {"id": "debug_all_statuses", "enemies": ["spider", "imp", "bat", "ghost"]}
+  ],
+  "zones": [
+    {"id": "overworld", "steps_per_encounter": 14, "background": "plains", "entries": [
+      {"group": "slimes", "weight": 5, "terrain": ["plains", "road"]},
+      {"group": "slime_trio", "weight": 3, "terrain": ["plains"]},
+      {"group": "slime_bat", "weight": 3, "terrain": ["plains", "forest"]},
+      {"group": "goblin_pair", "weight": 3, "terrain": ["plains", "road"]},
+      {"group": "goblin_slime", "weight": 2, "terrain": ["plains"]},
+      {"group": "wolves", "weight": 4, "terrain": ["forest"]},
+      {"group": "spider_pack", "weight": 3, "terrain": ["forest"]},
+      {"group": "bandit_solo", "weight": 2, "terrain": ["road", "plains"]}
+    ]},
+    {"id": "overworld_east", "steps_per_encounter": 12, "background": "plains", "entries": [
+      {"group": "wolves", "weight": 4},
+      {"group": "bandit_gang", "weight": 3},
+      {"group": "spider_pack", "weight": 3},
+      {"group": "goblin_pair", "weight": 2}
+    ]},
+    {"id": "cave", "steps_per_encounter": 10, "background": "cave", "entries": [
+      {"group": "slugs", "weight": 4},
+      {"group": "skeletons", "weight": 4},
+      {"group": "imp_bats", "weight": 3},
+      {"group": "spider_pack", "weight": 2}
+    ]},
+    {"id": "cave_deep", "steps_per_encounter": 9, "background": "cave", "entries": [
+      {"group": "skeletons", "weight": 3},
+      {"group": "ghosts", "weight": 3},
+      {"group": "lizards", "weight": 3},
+      {"group": "lizard_imp", "weight": 3}
+    ]}
+  ]
+}

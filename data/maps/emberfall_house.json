@@ -1,0 +1,53 @@
+{
+ "id": "emberfall_house",
+ "name": "Quiet House",
+ "kind": "interior",
+ "bgm": "town",
+ "rows": [
+  "###########",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#####D#####"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 5,
+   "y": 9,
+   "map": "emberfall",
+   "tx": 15,
+   "ty": 11,
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "hermit",
+   "name": "Hermit",
+   "x": 5,
+   "y": 3,
+   "glyph": "H",
+   "color": "9090a0",
+   "dialog": "hermit",
+   "facing": "down"
+  },
+  {
+   "type": "chest",
+   "x": 1,
+   "y": 1,
+   "gold": 120
+  },
+  {
+   "type": "chest",
+   "x": 9,
+   "y": 1,
+   "item": "bomb_fragment",
+   "count": 2
+  }
+ ]
+}

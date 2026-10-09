@@ -1,0 +1,28 @@
+{
+  "game_title": "The Ember Crystal",
+  "new_game": {
+    "party": ["ash", "mira", "dorn"],
+    "gold": 150,
+    "items": [{"id": "potion", "count": 3}, {"id": "antidote", "count": 1}],
+    "map": "emberfall",
+    "x": 11,
+    "y": 15,
+    "facing": "up"
+  },
+  "debug_party": {
+    "party": ["ash", "mira", "dorn", "vex"],
+    "gold": 5000,
+    "items": [
+      {"id": "potion", "count": 10}, {"id": "hi_potion", "count": 5}, {"id": "ether", "count": 5},
+      {"id": "phoenix_down", "count": 3}, {"id": "antidote", "count": 3}, {"id": "eye_drops", "count": 2},
+      {"id": "echo_herb", "count": 2}, {"id": "remedy", "count": 2}, {"id": "tent", "count": 2},
+      {"id": "smoke_bomb", "count": 3}, {"id": "iron_sword", "count": 1}, {"id": "flame_sword", "count": 1},
+      {"id": "chain_mail", "count": 1}, {"id": "silk_robe", "count": 1}, {"id": "bronze_shield", "count": 1},
+      {"id": "wizard_hat", "count": 1}, {"id": "power_ring", "count": 1}, {"id": "speed_boots", "count": 1},
+      {"id": "ribbon", "count": 1}, {"id": "ember_amulet", "count": 1}, {"id": "iron_knuckles", "count": 1}
+    ],
+    "flags": {}
+  },
+  "encounter_step_variance": 0.5,
+  "poison_field_step_interval": 4
+}

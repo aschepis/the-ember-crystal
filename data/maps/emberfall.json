@@ -1,0 +1,158 @@
+{
+ "id": "emberfall",
+ "name": "Emberfall",
+ "kind": "town",
+ "bgm": "town",
+ "rows": [
+  "########################",
+  "#......................#",
+  "#..RRRR....RRRR...RRRR.#",
+  "#..RRRR....RRRR...RRRR.#",
+  "#..#D##....#D##...#D##.#",
+  "#......................#",
+  "#..rrrrrrrrrrrrrrrrrrr.#",
+  "#..r.......r.........r.#",
+  "#..r..RRRR.r..RRRR...r.#",
+  "#..r..RRRR.r..RRRR...r.#",
+  "#..r..#D##.r..#D##...r.#",
+  "#..r.......r.........r.#",
+  "#..rrrrrrrrrrrrrrrrrrr.#",
+  "#..........r...........#",
+  "#.....~~...r....ff.....#",
+  "#.....~~...r...........#",
+  "#..........r...........#",
+  "###########r############"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 11,
+   "y": 17,
+   "map": "overworld",
+   "tx": 9,
+   "ty": 7,
+   "facing": "down"
+  },
+  {
+   "type": "warp",
+   "x": 4,
+   "y": 4,
+   "map": "emberfall_inn",
+   "tx": 5,
+   "ty": 8,
+   "facing": "up"
+  },
+  {
+   "type": "warp",
+   "x": 12,
+   "y": 4,
+   "map": "emberfall_elder",
+   "tx": 5,
+   "ty": 8,
+   "facing": "up"
+  },
+  {
+   "type": "warp",
+   "x": 19,
+   "y": 4,
+   "map": "emberfall_shop_items",
+   "tx": 5,
+   "ty": 8,
+   "facing": "up"
+  },
+  {
+   "type": "warp",
+   "x": 7,
+   "y": 10,
+   "map": "emberfall_shop_gear",
+   "tx": 5,
+   "ty": 8,
+   "facing": "up"
+  },
+  {
+   "type": "warp",
+   "x": 15,
+   "y": 10,
+   "map": "emberfall_house",
+   "tx": 5,
+   "ty": 8,
+   "facing": "up"
+  },
+  {
+   "type": "sign",
+   "x": 3,
+   "y": 5,
+   "text": "The Warm Hearth Inn"
+  },
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 5,
+   "text": "Elder's House"
+  },
+  {
+   "type": "sign",
+   "x": 18,
+   "y": 5,
+   "text": "Emberfall Sundries"
+  },
+  {
+   "type": "sign",
+   "x": 6,
+   "y": 11,
+   "text": "The Whetstone & Hardwear"
+  },
+  {
+   "type": "npc",
+   "id": "villager_1",
+   "name": "Villager",
+   "x": 5,
+   "y": 7,
+   "glyph": "V",
+   "color": "c0a080",
+   "dialog": "villager_1",
+   "wander": true
+  },
+  {
+   "type": "npc",
+   "id": "villager_2",
+   "name": "Child",
+   "x": 16,
+   "y": 14,
+   "glyph": "C",
+   "color": "e0c0a0",
+   "dialog": "villager_2",
+   "wander": true
+  },
+  {
+   "type": "npc",
+   "id": "villager_3",
+   "name": "Old Woman",
+   "x": 20,
+   "y": 7,
+   "glyph": "O",
+   "color": "b0b0d0",
+   "dialog": "villager_3"
+  },
+  {
+   "type": "npc",
+   "id": "vex_town",
+   "name": "Vex",
+   "x": 13,
+   "y": 7,
+   "glyph": "V",
+   "color": "7a4ad8",
+   "dialog": "vex_recruit",
+   "condition": [
+    "met_elder",
+    "!in_party:vex",
+    "!vex_declined_forever"
+   ]
+  },
+  {
+   "type": "save_point",
+   "x": 3,
+   "y": 14
+  }
+ ]
+}

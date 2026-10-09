@@ -1,0 +1,17 @@
+[
+  {"id": "ash", "name": "Ash", "class": "fighter", "start_level": 1, "glyph": "A", "color": "d84a3a",
+   "start_equipment": {"weapon": "bronze_sword", "body": "leather_armor"},
+   "bio": "A squire from Emberfall who swore to guard the crystal."},
+  {"id": "mira", "name": "Mira", "class": "white_mage", "start_level": 1, "glyph": "M", "color": "f0f0ff",
+   "start_equipment": {"weapon": "staff", "body": "robe"},
+   "bio": "Acolyte of the Ember shrine. Keeps everyone standing."},
+  {"id": "dorn", "name": "Dorn", "class": "thief", "start_level": 1, "glyph": "D", "color": "3aa860",
+   "start_equipment": {"weapon": "knife", "head": "leather_cap"},
+   "bio": "Reformed pickpocket. Knows every road out of town."},
+  {"id": "vex", "name": "Vex", "class": "black_mage", "start_level": 2, "glyph": "V", "color": "7a4ad8",
+   "start_equipment": {"weapon": "rod", "head": "wizard_hat"},
+   "bio": "Studied under the Elder. Impatient with people, patient with fire."},
+  {"id": "juno", "name": "Juno", "class": "monk", "start_level": 3, "glyph": "J", "color": "e0a040",
+   "start_equipment": {"weapon": "knuckles"},
+   "bio": "A traveller resting at the inn, looking for a reason to fight."}
+]

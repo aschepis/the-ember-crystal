@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+
+config_version=5
+
+[application]
+
+config/name="The Ember Crystal"
+config/description="A traditional JRPG engine (FF1-FF4 / Dragon Quest style) built as a platform for an AI asset pipeline."
+run/main_scene="res://scenes/Boot.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Controls="*res://src/autoload/Controls.gd"
+Placeholder="*res://src/autoload/Placeholder.gd"
+Database="*res://src/autoload/Database.gd"
+GameState="*res://src/autoload/GameState.gd"
+AudioManager="*res://src/autoload/AudioManager.gd"
+SaveSystem="*res://src/autoload/SaveSystem.gd"
+SceneStack="*res://src/autoload/SceneStack.gd"
+EventRunner="*res://src/autoload/EventRunner.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

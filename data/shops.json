@@ -1,0 +1,14 @@
+[
+  {"id": "emberfall_items", "name": "Emberfall Sundries", "kind": "item", "greeting": "Potions, remedies, camping gear. What'll it be?",
+   "items": ["potion", "hi_potion", "antidote", "eye_drops", "echo_herb", "phoenix_down", "tent", "smoke_bomb", "bomb_fragment"]},
+  {"id": "emberfall_weapons", "name": "The Whetstone", "kind": "weapon", "greeting": "Steel for every hand.",
+   "items": ["knife", "dagger", "bronze_sword", "iron_sword", "mace", "staff", "rod", "knuckles"]},
+  {"id": "emberfall_armor", "name": "Hardwear", "kind": "armor", "greeting": "Nothing fancy. Everything sturdy.",
+   "items": ["leather_shield", "bronze_shield", "leather_cap", "bronze_helm", "wizard_hat", "leather_armor", "chain_mail", "robe", "gi"]},
+  {"id": "emberfall_inn", "name": "The Warm Hearth Inn", "kind": "inn", "inn_price": 8, "greeting": "Welcome, travellers."},
+  {"id": "debug_everything", "name": "Debug Emporium", "kind": "item", "greeting": "Everything in the database, for testing.",
+   "items": ["potion", "hi_potion", "ether", "phoenix_down", "antidote", "eye_drops", "echo_herb", "remedy", "tent", "smoke_bomb", "bomb_fragment",
+             "knife", "dagger", "bronze_sword", "iron_sword", "flame_sword", "mace", "staff", "rod", "knuckles", "iron_knuckles",
+             "leather_shield", "bronze_shield", "leather_cap", "bronze_helm", "wizard_hat", "leather_armor", "chain_mail", "robe", "silk_robe", "gi",
+             "power_ring", "speed_boots", "ribbon", "ember_amulet"]}
+]

@@ -1,0 +1,62 @@
+{
+ "id": "emberfall_inn",
+ "name": "The Warm Hearth Inn",
+ "kind": "interior",
+ "bgm": "town",
+ "rows": [
+  "###########",
+  "#_________#",
+  "#_c_c_c___#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#_________#",
+  "#####D#####"
+ ],
+ "entities": [
+  {
+   "type": "warp",
+   "x": 5,
+   "y": 9,
+   "map": "emberfall",
+   "tx": 4,
+   "ty": 5,
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "innkeeper",
+   "name": "Innkeeper",
+   "x": 2,
+   "y": 1,
+   "glyph": "I",
+   "color": "d0a060",
+   "dialog": "innkeeper",
+   "facing": "down"
+  },
+  {
+   "type": "npc",
+   "id": "juno",
+   "name": "Juno",
+   "x": 8,
+   "y": 6,
+   "glyph": "J",
+   "color": "e0a040",
+   "dialog": "juno_recruit",
+   "condition": "!in_party:juno"
+  },
+  {
+   "type": "npc",
+   "id": "patron",
+   "name": "Patron",
+   "x": 3,
+   "y": 6,
+   "glyph": "P",
+   "color": "a0a0c0",
+   "dialog": "patron",
+   "wander": true
+  }
+ ]
+}
