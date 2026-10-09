@@ -48,11 +48,9 @@ func _run() -> void:
 			0:
 				GameState.new_game()
 				await SceneStack.fade_out(0.4)
-				var field = load("res://src/field/FieldScene.gd").new()
-				SceneStack.replace_all(field)
-				await SceneStack.fade_in(0.4)
-				if Database.dialogs.has("intro"):
-					field.call("_run_event", "intro")
+				SceneStack.fade_in(0.4)
+				# replace_all frees this scene, so it must be the last thing we do.
+				SceneStack.replace_all(load("res://src/field/FieldScene.gd").new())
 				return
 			1:
 				var sm = load("res://src/ui/SaveMenu.gd").new()

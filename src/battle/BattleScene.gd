@@ -356,8 +356,8 @@ func _pick_target(mode: String, dead_only: bool = false):
 			var t = await _target_done
 			_picking = false
 			_cursor.visible = false
-			for n in _enemy_nodes.values():
-				n.modulate = Color.WHITE
+			for e in _enemy_nodes:
+				_enemy_nodes[e].modulate = Color.WHITE if e.is_alive() else Color(1, 1, 1, 0)
 			return t
 	return true
 

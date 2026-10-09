@@ -224,9 +224,10 @@ func start_battle(group_id: String, background: String = "") -> String:
 	var result: String = await scene.finished
 	await SceneStack.fade_out(0.2)
 	SceneStack.pop(result)
-	await SceneStack.fade_in(0.2)
+	# Game over must replace the stack before the fade so nothing can be pushed on a doomed scene.
 	if result == "defeat":
 		game_over()
+	await SceneStack.fade_in(0.2)
 	return result
 
 func open_shop(shop_id: String) -> void:

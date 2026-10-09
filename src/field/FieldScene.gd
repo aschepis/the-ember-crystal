@@ -62,6 +62,10 @@ func _ready() -> void:
 	EventRunner.event_finished.connect(_refresh_entity_visibility)
 	GameState.party_changed.connect(func(): if player: player.refresh_leader())
 	load_map(GameState.map_id, GameState.map_x, GameState.map_y, GameState.facing)
+	if GameState.pending_event != "":
+		var ev := GameState.pending_event
+		GameState.pending_event = ""
+		_run_event(ev)
 
 func is_busy() -> bool:
 	return _busy or EventRunner.running or _menu_open or SceneStack.top() != self
@@ -360,5 +364,3 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_resume(_result) -> void:
 	_menu_open = false
-	if GameState.is_party_wiped():
-		EventRunner.game_over()

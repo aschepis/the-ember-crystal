@@ -19,6 +19,7 @@ var play_time: float = 0.0
 var rng := RandomNumberGenerator.new()
 var save_slot: int = 0            # last slot used, for "Save" shortcuts
 var started: bool = false
+var pending_event: String = ""    # dialog to run when the next FieldScene loads (new game intro)
 
 func _ready() -> void:
 	rng.randomize()
@@ -44,6 +45,7 @@ func new_game() -> void:
 	facing = ng.get("facing", "down")
 	steps = 0
 	play_time = 0.0
+	pending_event = ng.get("intro", "")
 	started = true
 	party_changed.emit()
 	gold_changed.emit(gold)
@@ -52,6 +54,7 @@ func new_game() -> void:
 func debug_party(level: int = 8) -> void:
 	new_game()
 	var dbg: Dictionary = Database.cfg("debug_party", {})
+	pending_event = ""
 	if dbg.has("party"):
 		party.clear()
 		for cid in dbg["party"]:

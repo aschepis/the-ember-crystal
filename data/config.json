@@ -7,7 +7,8 @@
     "map": "emberfall",
     "x": 11,
     "y": 15,
-    "facing": "up"
+    "facing": "up",
+    "intro": "intro"
   },
   "debug_party": {
     "party": ["ash", "mira", "dorn", "vex"],
